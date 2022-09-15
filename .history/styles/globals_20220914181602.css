@@ -1,0 +1,40 @@
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: sans-serif;
+}
+.wrapper {
+  width: 90%;
+  margin: 0 auto;
+}
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+.components {
+  border: 1px solid #333;
+  height: 300px;
+}
+.text {
+  text-align: center;
+}
+.header {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.listLink {
+  margin: 10px 0px;
+}
+.link {
+  color: #333;
+  margin: 0px 5px;
+}
+@media only screen and (max-width: 1023px) {
+  .list {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 8px;
+  }
+}
