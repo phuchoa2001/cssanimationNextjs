@@ -23,6 +23,9 @@ const CategoryStyle = styled.div`
       margin: 0px;
     }
   }
+  h3 {
+      display: inline-block;
+    }
 `;
 function ListCategory({ categorys }) {
   return (

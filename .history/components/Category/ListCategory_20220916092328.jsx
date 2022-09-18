@@ -7,22 +7,27 @@ const CategoryStyle = styled.div`
   margin: 10px 0px;
   display: flex;
   .box {
-    flex-direction: column;
-    align-items: center;
     display: flex;
-    justify-content: center;
-    width: 100%;
+    align-items: center;
   }
   .Listcategory {
     display: flex;
     height: auto;
     align-items: center;
     margin-left: 5px;
-    flex-wrap: wrap;
     p {
       margin: 0px;
     }
   }
+    .box {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      .Listcategory {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
 `;
 function ListCategory({ categorys }) {
   return (
@@ -30,6 +35,16 @@ function ListCategory({ categorys }) {
       <div className="box">
         <h3>Tùy chọn tìm kiếm : </h3>
         <div className="Listcategory">
+          {categorys.data.map((category) => (
+            <Category key={category["_id"]} name={category.name}>
+              {category.name}
+            </Category>
+          ))}
+          {categorys.data.map((category) => (
+            <Category key={category["_id"]} name={category.name}>
+              {category.name}
+            </Category>
+          ))}
           {categorys.data.map((category) => (
             <Category key={category["_id"]} name={category.name}>
               {category.name}

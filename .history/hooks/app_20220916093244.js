@@ -8,6 +8,7 @@ const fetcher = async (page) => {
 }
 
 export const useApp = ({ options, page, search }) => {
+    console.log("search", search);
     const querySearch = search ? `&search=${search}` : ""
     const option = {
         dedupingInterval: 60 * 60 * 1000, // 1hr

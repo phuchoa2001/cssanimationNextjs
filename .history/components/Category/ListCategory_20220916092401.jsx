@@ -8,10 +8,8 @@ const CategoryStyle = styled.div`
   display: flex;
   .box {
     flex-direction: column;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    width: 100%;
+      align-items: center;
+      width: 100%;
   }
   .Listcategory {
     display: flex;
@@ -23,6 +21,15 @@ const CategoryStyle = styled.div`
       margin: 0px;
     }
   }
+    .box {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      .Listcategory {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
 `;
 function ListCategory({ categorys }) {
   return (

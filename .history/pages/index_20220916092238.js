@@ -1,8 +1,7 @@
 import { Spin } from "antd";
 import Link from "next/link";
 import { Pagination } from 'antd';
-import useSWR from 'swr';
-import { useRouter } from "next/router";
+import useSWR from 'swr'
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 
@@ -25,10 +24,8 @@ padding: 10px 0px;
 `
 
 export default function Home({ categorys }) {
-  const router = useRouter();
-  const { search } = router.query;
   const [page, setPage] = useState(1);
-  const { data, loading } = useApp({ page , search });
+  const { data, loading } = useApp({ page });
   const handleChange = (value) => {
     setPage(value);
   }

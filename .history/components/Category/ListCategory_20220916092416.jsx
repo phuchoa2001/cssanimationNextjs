@@ -9,8 +9,6 @@ const CategoryStyle = styled.div`
   .box {
     flex-direction: column;
     align-items: center;
-    display: flex;
-    justify-content: center;
     width: 100%;
   }
   .Listcategory {

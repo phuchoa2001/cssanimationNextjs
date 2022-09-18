@@ -1,4 +1,6 @@
 import React from "react";
+import { useRouter } from 'next/router'
+
 
 import styled from "styled-components";
 import Category from "./Category";
@@ -24,7 +26,9 @@ const CategoryStyle = styled.div`
     }
   }
 `;
-function ListCategory({ categorys }) {
+function ListCategory({ categorys }) {  
+  const router = useRouter()
+  console.log("router" , router);
   return (
     <CategoryStyle>
       <div className="box">

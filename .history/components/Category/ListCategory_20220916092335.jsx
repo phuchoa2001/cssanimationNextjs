@@ -7,22 +7,27 @@ const CategoryStyle = styled.div`
   margin: 10px 0px;
   display: flex;
   .box {
-    flex-direction: column;
-    align-items: center;
     display: flex;
-    justify-content: center;
-    width: 100%;
+    align-items: center;
   }
   .Listcategory {
     display: flex;
     height: auto;
     align-items: center;
     margin-left: 5px;
-    flex-wrap: wrap;
     p {
       margin: 0px;
     }
   }
+    .box {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      .Listcategory {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
 `;
 function ListCategory({ categorys }) {
   return (
