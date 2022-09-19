@@ -119,7 +119,7 @@ export async function getStaticPaths() {
         paths: posts.data.map((post) => ({
             params: { id: post["_id"] },
         })),
-        fallback: "blocking", // or false // See the "fallback" section below
+        fallback: true, // or false // See the "fallback" section below
     };
 }
 
