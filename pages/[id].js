@@ -122,7 +122,7 @@ export async function getStaticPaths() {
 
 // STEP 2: tell next.js what content to get for a single page
 export async function getStaticProps({ params }) {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/css/app/${params.id}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/css/app/${params.id}?page_size=100`);
     const data = await res.json();
     return {
         props: {
