@@ -24,7 +24,8 @@ padding: 10px 0px;
 }
 `
 
-export default function Home({ categorys }) {
+
+export default function Home() {
   const router = useRouter();
   const { search } = router.query;
   const [page, setPage] = useState(1);
@@ -46,7 +47,7 @@ export default function Home({ categorys }) {
             }
           </SidebarStyle>
         </div>
-        <ListCategory categorys={categorys} />
+        <ListCategory  />
         {!loading ?
           <div className="list">
             {data.data.map((app) =>
@@ -56,15 +57,4 @@ export default function Home({ categorys }) {
       </div>
     </div>
   );
-}
-
-export async function getStaticProps() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/css/category?page_size=100`);
-  const data = await res.json();
-  return {
-    props: {
-      categorys: data,
-    },
-    revalidate: 1,
-  };
 }

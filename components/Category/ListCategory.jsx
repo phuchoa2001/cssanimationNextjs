@@ -1,7 +1,10 @@
+import { Spin } from "antd";
 import React from "react";
 
 import styled from "styled-components";
 import Category from "./Category";
+
+import { useCategory } from "../../hooks/category";
 
 const CategoryStyle = styled.div`
   margin: 10px 0px;
@@ -24,17 +27,22 @@ const CategoryStyle = styled.div`
     }
   }
 `;
-function ListCategory({ categorys }) {
+function ListCategory({}) {
+  const { data: categorys, loading } = useCategory({});
   return (
     <CategoryStyle>
       <div className="box">
         <h3>Tùy chọn tìm kiếm : </h3>
         <div className="Listcategory">
-          {categorys.data.map((category) => (
-            <Category key={category["_id"]} name={category.name}>
-              {category.name}
-            </Category>
-          ))}
+          {!loading ? (
+            categorys.data.map((category) => (
+              <Category key={category["_id"]} name={category.name}>
+                {category.name}
+              </Category>
+            ))
+          ) : (
+            <Spin />
+          )}
         </div>
       </div>
     </CategoryStyle>
