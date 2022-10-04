@@ -112,9 +112,6 @@ function PostId({ post }) {
 export async function getStaticPaths() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/css/app?page_size=100`);
     const posts = await res.json();
-
-
-
     return {
         paths: posts.data.map((post) => ({
             params: { id: post["_id"] },
