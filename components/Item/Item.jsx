@@ -48,6 +48,9 @@ const ItemStyles = styled.div`
     }
   }
 `;
+const CardStyles = styled.div`
+  ${(props) => props.css}
+`;
 
 function Item({ html, css, title, _id, eye = true }) {
   const [styleCss, setStyleCss] = useState(null);
@@ -65,33 +68,34 @@ function Item({ html, css, title, _id, eye = true }) {
   }
   return (
     <ItemStyles>
-      <style>{`${styleCss}`}</style>
-      <div className="action">
-        {eye && (
-          <div className="show" onClick={() => router.push(`/${_id}`)}>
-            <EyeOutlined style={{ fontSize: 23 }} />
+      <CardStyles css={styleCss}>
+        <div className="action">
+          {eye && (
+            <div className="show" onClick={() => router.push(`/${_id}`)}>
+              <EyeOutlined style={{ fontSize: 23 }} />
+            </div>
+          )}
+        </div>
+        <h3 className="title">{title}</h3>
+        <p className="note">Hover PC of Click Mobile</p>
+        <div className="box">
+          <div dangerouslySetInnerHTML={{ __html: html }} />
+        </div>
+        <div className="copys">
+          <div
+            className="html copy"
+            onClick={() => Copy(pretty(html), "Bạn đã sao chép HTML")}
+          >
+            <CopyOutlined /> Copy HTML
           </div>
-        )}
-      </div>
-      <h3 className="title">{title}</h3>
-      <p className="note">Hover PC of Click Mobile</p>
-      <div className="box">
-        <div dangerouslySetInnerHTML={{ __html: html }} />
-      </div>
-      <div className="copys">
-        <div
-          className="html copy"
-          onClick={() => Copy(pretty(html), "Bạn đã sao chép HTML")}
-        >
-          <CopyOutlined /> Copy HTML
+          <div
+            className="css copy"
+            onClick={() => Copy(cssbeautify(styleCss), "Bạn đã sao chép CSS")}
+          >
+            <CopyOutlined /> Copy CSS
+          </div>
         </div>
-        <div
-          className="css copy"
-          onClick={() => Copy(cssbeautify(styleCss), "Bạn đã sao chép CSS")}
-        >
-          <CopyOutlined /> Copy CSS
-        </div>
-      </div>
+      </CardStyles>
     </ItemStyles>
   );
 }
