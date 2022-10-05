@@ -29,7 +29,7 @@ export default function Home() {
   const router = useRouter();
   const { search } = router.query;
   const [page, setPage] = useState(1);
-  const { data, loading } = useApp({ page , search });
+  const { data, loading } = useApp({ page , search })
   const handleChange = (value) => {
     setPage(value);
   }
