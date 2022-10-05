@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const removeImports = require("next-remove-imports")();
+
+
+
+module.exports = removeImports({
+  experimental: { esmExternals: true },
   reactStrictMode: false,
   compiler: {
     styledComponents: true,
@@ -8,6 +13,4 @@ const nextConfig = {
     loader: 'akamai',
     path: '',
   },
-}
-
-module.exports = nextConfig
+});

@@ -1,6 +1,10 @@
 import React from 'react'
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import styled from 'styled-components';
+
+import cssbeautify from "cssbeautify";
+import pretty from "pretty";
 import {
     HomeOutlined,
 } from '@ant-design/icons';
@@ -10,6 +14,11 @@ import Search from "../components/Search/Search";
 import { useRouter } from 'next/router';
 import HeaderSeo from '../components/HeaderSeo/HeaderSeo';
 import Category from '../components/Category/Category';
+
+const CodeEditor = dynamic(
+    () => import("@uiw/react-textarea-code-editor").then((mod) => mod.default),
+    { ssr: false }
+);
 
 const PostStyle = styled.div`
  display: flex;
@@ -57,7 +66,6 @@ background:  #333;
 color: #fff;
 padding: 20px;
 border-radius: 8px;
-overflow-wrap: break-word;
 `
 const ShowStyle = styled.div`
 `
@@ -95,11 +103,24 @@ function PostId({ post }) {
                     <CodeStyle>
                         <h3 className='title'>HTML :</h3>
                         <BoxCodeStyle>
-                            {post.html}
+                            <CodeEditor
+                                name={"htmlCodeView"}
+                                value={pretty(post.html, { ocd: true })}
+                                language={"css"}
+                                onChange={false}
+                            />
                         </BoxCodeStyle>
                         <h3 className='title'>CSS :</h3>
                         <BoxCodeStyle>
-                            {post.css}
+                            <CodeEditor
+                                name={"htmlCodeView"}
+                                value={`${cssbeautify(post.css, {
+                                    indent: `  `,
+                                    autosemicolon: true,
+                                })}`}
+                                language={"css"}
+                                onChange={false}
+                            />
                         </BoxCodeStyle>
                     </CodeStyle>
                 </div>

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { EyeOutlined, CopyOutlined } from "@ant-design/icons";
 import { useRouter } from "next/router";
+import cssbeautify from "cssbeautify";
+import pretty from "pretty";
 import styled from "styled-components";
 
 const ItemStyles = styled.div`
@@ -79,13 +81,13 @@ function Item({ html, css, title, _id, eye = true }) {
       <div className="copys">
         <div
           className="html copy"
-          onClick={() => Copy(html, "Bạn đã sao chép HTML")}
+          onClick={() => Copy(pretty(html), "Bạn đã sao chép HTML")}
         >
           <CopyOutlined /> Copy HTML
         </div>
         <div
           className="css copy"
-          onClick={() => Copy(styleCss, "Bạn đã sao chép CSS")}
+          onClick={() => Copy(cssbeautify(styleCss), "Bạn đã sao chép CSS")}
         >
           <CopyOutlined /> Copy CSS
         </div>
