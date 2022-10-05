@@ -110,7 +110,7 @@ function PostId({ post }) {
 
 // STEP 1: tell next.js how many pages to generate
 export async function getStaticPaths() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/css/app?page_size=100`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/public/css/app?page_size=100`);
     const posts = await res.json();
     return {
         paths: posts.data.map((post) => ({
@@ -122,7 +122,7 @@ export async function getStaticPaths() {
 
 // STEP 2: tell next.js what content to get for a single page
 export async function getStaticProps({ params }) {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/css/app/${params.id}?page_size=10`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/public/css/app/${params.id}?page_size=10`);
     const data = await res.json();
     return {
         props: {

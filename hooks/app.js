@@ -13,7 +13,7 @@ export const useApp = ({ options, page, search }) => {
         dedupingInterval: 60 * 60 * 1000, // 1hr
         ...options,
     }
-    const { data, error, mutate } = useSWR(`/css/app?page_size=10&page=${page}${querySearch}`, fetcher, option);
+    const { data, error, mutate } = useSWR(`/public/css/app?page_size=10&page=${page}${querySearch}`, fetcher, option);
 
 
 

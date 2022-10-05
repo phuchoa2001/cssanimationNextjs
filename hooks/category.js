@@ -13,7 +13,7 @@ export const useCategory = ({ options, page, search }) => {
         dedupingInterval: 60 * 60 * 1000, // 1hr
         ...options,
     }
-    const { data, error, mutate } = useSWR(`/css/category`, fetcher, option);
+    const { data, error, mutate } = useSWR(`/public/css/category`, fetcher, option);
 
 
 
